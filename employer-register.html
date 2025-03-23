@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Registration - JobConnect</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics-compat.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>JobConnect</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="register.html" class="btn-register">Register</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Employer Registration</h1>
+            <p>Create an account to start posting jobs and finding the perfect candidates</p>
+        </div>
+    </section>
+
+    <section class="registration-section">
+        <div class="form-container">
+            <h2 class="form-title">Create Employer Account</h2>
+            
+            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+            <div id="success-message" class="alert alert-success" style="display: none;"></div>
+            
+            <form id="employerRegisterForm">
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" id="companyName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="industry">Industry</label>
+                    <select id="industry" class="form-control" required>
+                        <option value="">Select Industry</option>
+                        <option value="technology">Technology</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="finance">Finance & Banking</option>
+                        <option value="education">Education</option>
+                        <option value="retail">Retail</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="construction">Construction</option>
+                        <option value="hospitality">Hospitality & Tourism</option>
+                        <option value="media">Media & Entertainment</option>
+                        <option value="transportation">Transportation & Logistics</option>
+                        <option value="agriculture">Agriculture</option>
+                        <option value="energy">Energy & Utilities</option>
+                        <option value="legal">Legal Services</option>
+                        <option value="nonprofit">Non-profit & NGO</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companySize">Company Size</label>
+                    <select id="companySize" class="form-control" required>
+                        <option value="">Select Company Size</option>
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-50">11-50 employees</option>
+                        <option value="51-200">51-200 employees</option>
+                        <option value="201-500">201-500 employees</option>
+                        <option value="501-1000">501-1000 employees</option>
+                        <option value="1001+">1001+ employees</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companyWebsite">Company Website (Optional)</label>
+                    <input type="url" id="companyWebsite" class="form-control" placeholder="https://www.example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactName">Contact Person Name</label>
+                    <input type="text" id="contactName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactPosition">Contact Person Position</label>
+                    <input type="text" id="contactPosition" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email</label>
+                    <input type="email" id="contactEmail" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactPhone">Contact Phone</label>
+                    <input type="tel" id="contactPhone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                    <small class="form-text">Password must be at least 6 characters long</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companyDescription">Company Description</label>
+                    <textarea id="companyDescription" class="form-control" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-check">
+                    <input type="checkbox" id="termsCheck" class="form-check-input" required>
+                    <label for="termsCheck" class="form-check-label">I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></label>
+                </div>
+                
+                <button type="submit" class="form-btn">Create Account</button>
+            </form>
+            
+            <div class="form-footer">
+                <p>Already have an account? <a href="login.html">Log In</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>JobConnect</h3>
+                <p>Connecting talent with opportunity since 2025.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.html">Browse Jobs</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Employers</h3>
+                <ul>
+                    <li><a href="employer-register.html">Register</a></li>
+                    <li><a href="post-job.html">Post a Job</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="employer-resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@jobconnect.com</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Employment St, Job City</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 JobConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/employer-register.js"></script>
+</body>
+</html>
